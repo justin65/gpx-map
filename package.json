@@ -3,13 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mapbox/togeojson": "^0.16.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "buffer": "^6.0.3",
+    "exif-js": "^2.3.0",
+    "leaflet": "^1.9.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-leaflet": "^4.2.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "stream": "^0.0.2",
+    "timers": "^0.1.1",
+    "web-vitals": "^2.1.4",
+    "xml2js": "^0.6.2"
   },
   "scripts": {
     "start": "react-scripts start",
