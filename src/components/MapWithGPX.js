@@ -145,8 +145,10 @@ const MapWithGPX = () => {
 
   return (
     <div>
-      <input type="file" accept=".gpx" onChange={handleFileUpload} />
-      <input type="file" accept="image/*" webkitdirectory="true" directory="true" onChange={handleDirectoryUpload} />
+      <div style={{ marginTop: '10px', marginBottom: '10px' }}>
+        gpx file: <input type="file" accept=".gpx" onChange={handleFileUpload} />
+        image folder: <input type="file" accept="image/*" webkitdirectory="true" directory="true" onChange={handleDirectoryUpload} />
+      </div>
       <MapContainer center={[0, 0]} zoom={2} style={{ height: "600px", width: "100%" }}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
