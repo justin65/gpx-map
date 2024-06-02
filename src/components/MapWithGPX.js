@@ -70,10 +70,10 @@ const MapWithGPX = () => {
           // Calculate bounds
           const bounds = new LatLngBounds(trackPoints);
           setBounds(bounds);
-
           const wpts = result.gpx.wpt ? result.gpx.wpt.map(wpt => ({
             lat: wpt.$.lat,
             lon: wpt.$.lon,
+            time: wpt.time || '',
             name: wpt.name ? wpt.name[0] : 'Waypoint'
           })) : [];
           setWaypoints(wpts);
@@ -138,6 +138,11 @@ const MapWithGPX = () => {
     setHighlightedWaypoint(waypoint);
   };
 
+  const toLocalTime = (utcDateString) => {
+    const utcDate = new Date(utcDateString);
+    return utcDate.toLocaleString();
+  };
+
   return (
     <div>
       <input type="file" accept=".gpx" onChange={handleFileUpload} />
@@ -184,6 +189,7 @@ const MapWithGPX = () => {
           <table border="1">
             <thead>
               <tr>
+                <th>Time</th>
                 <th>Name</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
@@ -192,6 +198,7 @@ const MapWithGPX = () => {
             <tbody>
               {waypoints.map((wpt, index) => (
                 <tr key={index} onClick={() => handleWaypointClick(wpt)} style={{ cursor: 'pointer' }}>
+                  <td>{toLocalTime(wpt.time)}</td>
                   <td>{wpt.name}</td>
                   <td>{wpt.lat}</td>
                   <td>{wpt.lon}</td>
