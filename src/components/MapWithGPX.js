@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Polyline, Marker, Popup, useMap, CircleMarker } from 'react-leaflet';
 import { parseString } from 'xml2js';
-import { LatLng, LatLngBounds, Icon } from 'leaflet';
+import { LatLng, LatLngBounds } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import exif from 'exif-js';
 import L from 'leaflet';
@@ -13,17 +13,6 @@ L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
   shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-});
-
-// Create a custom icon with half the size of the default icon
-const smallIcon = new Icon({
-  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-  iconSize: [12, 20], // half of the default size [25, 41]
-  iconAnchor: [6, 20], // half of the default anchor [12, 41]
-  popupAnchor: [0, -20], // half of the default popup anchor [1, -34]
-  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-  shadowSize: [20, 20], // half of the default size [41, 41]
-  shadowAnchor: [6, 20], // half of the default anchor [12, 41]
 });
 
 const commonIconProps = {
