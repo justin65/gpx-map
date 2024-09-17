@@ -54,6 +54,7 @@ const MapWithGPX = () => {
   const [imageFiles, setImageFiles] = useState([]);
 
   const handleFileUpload = (event) => {
+    console.log('handleFileUpload');
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
@@ -64,8 +65,16 @@ const MapWithGPX = () => {
             console.error(err);
             return;
           }
+          const newTracks = [];
           const trackPoints = result.gpx.trk[0].trkseg[0].trkpt.map(pt => new LatLng(pt.$.lat, pt.$.lon));
-          setTracks([trackPoints]);
+          result.gpx.trk.forEach((trk) => {
+            trk.trkseg.forEach((seg) => {
+              console.log(seg);
+              newTracks.push(seg.trkpt.map(pt => new LatLng(pt.$.lat, pt.$.lon)));
+            })
+          })
+          // setTracks([trackPoints]);
+          setTracks(newTracks);
 
           // Calculate bounds
           const bounds = new LatLngBounds(trackPoints);
